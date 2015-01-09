@@ -61,7 +61,27 @@
     disp_y = dispy
     disp_z = dispz
   [../]
+[]
 
+[AuxVariables]
+  # stress aux variables are defined for output; this is a way to get integration point variables to the output file
+  [./stress_xx]  order=CONSTANT  family=MONOMIAL  [../]
+  [./stress_yy]  order=CONSTANT  family=MONOMIAL  [../]
+  [./stress_zz]  order=CONSTANT  family=MONOMIAL  [../]
+  [./stress_xy]  order=CONSTANT  family=MONOMIAL  [../]
+  [./stress_yz]  order=CONSTANT  family=MONOMIAL  [../]
+  [./stress_zx]  order=CONSTANT  family=MONOMIAL  [../]
+[]
+
+[AuxKernels]
+  # indices for the MaterialTensorAux are (0,1,2,3,4,5) --> (xx, yy, zz, xy, yz, zx)
+  # for efficiency, we only compute these at the end of a timestep
+  [./aux_stress_xx]  type=MaterialTensorAux  tensor=stress  variable=stress_xx  index=0  execute_on=timestep  [../]
+  [./aux_stress_yy]  type=MaterialTensorAux  tensor=stress  variable=stress_yy  index=1  execute_on=timestep  [../]
+  [./aux_stress_zz]  type=MaterialTensorAux  tensor=stress  variable=stress_zz  index=2  execute_on=timestep  [../]
+  [./aux_stress_xy]  type=MaterialTensorAux  tensor=stress  variable=stress_xy  index=3  execute_on=timestep  [../]
+  [./aux_stress_yz]  type=MaterialTensorAux  tensor=stress  variable=stress_yz  index=4  execute_on=timestep  [../]
+  [./aux_stress_zx]  type=MaterialTensorAux  tensor=stress  variable=stress_zx  index=5  execute_on=timestep  [../]
 []
 
 [Executioner]
@@ -84,6 +104,7 @@
 []
 
 [Outputs]
+  output_on = 'initial timestep_end'
   exodus = true
   
   [./console]

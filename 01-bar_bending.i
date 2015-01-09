@@ -3,16 +3,16 @@
 [Mesh]
       dim           = 3
       distribution  = DEFAULT
-      nx            = 4
+      nx            = 16
       ny            = 4
-      nz            = 16
+      nz            = 4
       type          = GeneratedMesh
-      xmax          =  0.5
-      xmin          = -0.5
+      xmax          = 10.0
+      xmin          =  0.0
       ymax          =  0.5
       ymin          = -0.5
-      zmax          =  5.0
-      zmin          = -5.0
+      zmax          =  0.5
+      zmin          = -0.5
       displacements = 'dispx dispy dispz'
 []
 
@@ -31,14 +31,14 @@
 
 
 [BCs]
-  [./displacement_x]  type=DirichletBC  variable='dispx'  boundary='front'  value=0.0  [../]
-  [./displacement_y]  type=DirichletBC  variable='dispy'  boundary='front'  value=0.0  [../]
-  [./displacement_z]  type=DirichletBC  variable='dispz'  boundary='front'  value=0.0  [../]
+  [./displacement_x]  type=DirichletBC  variable='dispx'  boundary='left'  value=0.0  [../]
+  [./displacement_y]  type=DirichletBC  variable='dispy'  boundary='left'  value=0.0  [../]
+  [./displacement_z]  type=DirichletBC  variable='dispz'  boundary='left'  value=0.0  [../]
 
   [./moving_z]
     type = FunctionDirichletBC
     variable = dispy
-    boundary = 'back'
+    boundary = 'right'
     function = pull
   [../]
 []

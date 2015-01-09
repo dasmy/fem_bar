@@ -13,6 +13,23 @@ Running MOOSE
 =============
 Just call `./solid_mechanics-opt -i INPUTFILE.i`.
 For a parallel run, you can use MPI: `mpirun -np 2 ./solid_mechanics-opt -i INPUTFILE.i` but for our small examples, more than 2 processors will not improve speed.
+The produced Exodus (`*.e`) files can for example be visualized using [ParaView](http://www.paraview.org).
+
+Input Files
+===========
+The following input files are available:
+* [`01-bar_bending.i`](01-bar_bending.i),[`01-bar_bending_2d.i`](01-bar_bending_2d.i):
+  3D and 2D case of a bar being fixed at one end and bent by imposing a time-dependent displacement on the other end.
+* [`02-bar_velocityBC.i`](02-bar_velocityBC.i),[`02-bar_velocityBC_2d.i`](02-bar_velocityBC_2d.i):
+  3D and 2D case of a bar being fixed at one end and bent by imposing a temporally and spatially varying velocity to one of its sides.
+
+Input File Structure
+====================
+for understanding how MOOSE works and is fed with input, it will really make sense to study the relevant chapters in the [MOOSE tutorial](http://mooseframework.org/static/media/uploads/docs/main.pdf).
+For a rough overview on what we are doing, the following figure shows the structure of [`02-bar_velocityBC_2d.i`](02-bar_velocityBC_2d.i):
+
+![02-bar_velocityBC_2d.svg](https://rawgit.com/dasmy/fem_balken/master/02-bar_velocityBC_2d.svg)
+
 
 TODO
 ====

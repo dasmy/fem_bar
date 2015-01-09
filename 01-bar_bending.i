@@ -17,29 +17,13 @@
 []
 
 [Variables]
-  [./dispx]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-
-  [./dispy]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-
-  [./dispz]
-    order = FIRST
-    family = LAGRANGE
-  [../]
+  [./dispx]  order=FIRST  family=LAGRANGE  [../]
+  [./dispy]  order=FIRST  family=LAGRANGE  [../]
+  [./dispz]  order=FIRST  family=LAGRANGE  [../]
 []
 
 [SolidMechanics]
-  # for every variable given, this sets up a StressDivergence kernel (see SolidMechanicsAction.C)  
-  [./solid]
-    disp_x = dispx
-    disp_y = dispy
-    disp_z = dispz
-  [../]
+  [./solid]  disp_x=dispx  disp_y=dispy  disp_z=dispz  [../]
 []
 
 [Kernels]
@@ -47,49 +31,22 @@
 
 
 [BCs]
-  [./force_x]
-    type = NeumannBC
-    variable = dispx
-    boundary = 'left right top bottom front back'
-    value = 0.0
-  [../]
-  [./force_y]
-    type = NeumannBC
-    variable = dispy
-    boundary = 'left right top bottom front back'
-    value = 0.0
-  [../]
-  [./force_z]
-    type = NeumannBC
-    variable = dispz
-    boundary = 'left right top bottom front back'
-    value = 0.0
-  [../]
-
-  [./displacement_x]
-    type = DirichletBC
-    variable = dispx
-    boundary = 'front'
-    value = 0.0
-  [../]
-  [./displacement_y]
-    type = DirichletBC
-    variable = dispy
-    boundary = 'front'
-    value = 0.0
-  [../]
-  [./displacement_z]
-    type = DirichletBC
-    variable = dispz
-    boundary = 'front'
-    value = 0.0
-  [../]
+  [./displacement_x]  type=DirichletBC  variable='dispx'  boundary='front'  value=0.0  [../]
+  [./displacement_y]  type=DirichletBC  variable='dispy'  boundary='front'  value=0.0  [../]
+  [./displacement_z]  type=DirichletBC  variable='dispz'  boundary='front'  value=0.0  [../]
 
   [./moving_z]
     type = FunctionDirichletBC
     variable = dispy
     boundary = 'back'
     function = pull
+  [../]
+[]
+
+[Functions]
+  [./pull]
+    type = ParsedFunction
+    value = '5*sin(2*pi*t/5)'
   [../]
 []
 
@@ -123,13 +80,6 @@
   #num_steps = 10
   dtmax      = 0.1
   dtmin      = 0.1
-[]
-
-[Functions]
-  [./pull]
-    type = ParsedFunction
-    value = '5*sin(2*pi*t/5)'
-  [../]
 []
 
 [Outputs]

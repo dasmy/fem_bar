@@ -28,8 +28,8 @@
 
 
 [BCs]
-  [./displacement_x]  type=DirichletBC  variable='dispx'  boundary='left'  value=0.0  [../]
-  [./displacement_y]  type=DirichletBC  variable='dispy'  boundary='left'  value=0.0  [../]
+  [./displacement_x]  type=DirichletBC  variable=dispx  boundary=left  value=0.0  [../]
+  [./displacement_y]  type=DirichletBC  variable=dispy  boundary=left  value=0.0  [../]
 
   [./velocity]
     type = PresetVelocity

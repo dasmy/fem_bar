@@ -1,6 +1,16 @@
 Installation of MOOSE
 =====================
-* Follow the installation instructions (including prerequisites etc.) for your specific operating system on [mooseframework.org](http://mooseframework.org/getting-started/).
+* Follow the installation instructions (including prerequisites etc.) for your specific operating system on 
+  [mooseframework.org](http://mooseframework.org/getting-started/) but instead of the original repository
+  given in *2. Clone MOOSE*, please use my fork to allow adding code if necessary, i.e. do
+  
+    mkdir ~/projects
+    cd ~/projects
+    git clone https://github.com/dasmy/moose.git
+    cd ~/projects/moose
+    git checkout fem_bar
+    
+  Afterwards, proceed with *3. Compile libMesh*
 * Build MOOSE by changing into `moose/test` and calling `make -j 4`.
 * Change into `moose/test` and invoke `./run_tests` which will verify that your MOOSE installation is working correctly.
 

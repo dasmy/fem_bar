@@ -38,7 +38,7 @@ Input File Structure
 for understanding how MOOSE works and is fed with input, it will really make sense to study the relevant chapters in the [MOOSE tutorial](http://mooseframework.org/static/media/uploads/docs/main.pdf).
 For a rough overview on what we are doing, the following figure shows the structure of [`02-bar_velocityBC_2d.i`](02-bar_velocityBC_2d.i):
 
-![02-bar_velocityBC_2d.svg](https://rawgit.com/dasmy/fem_balken/master/02-bar_velocityBC_2d.svg)
+![02-bar_velocityBC_2d.svg](https://rawgit.com/dasmy/fem_bar/master/02-bar_velocityBC_2d.svg)
 
 
 TODO

@@ -19,6 +19,19 @@ Compilation of the Solid Mechanics example application
 Change to `moose/modules/solid_mechanics` and call `make`.
 This produces the executable `solid_mechanics-opt` which is used for our input files.
 
+Cloning this repository
+=======================
+You can copy the files from this repository by doing
+
+    cd ~/projects
+    git clone https://github.com/dasmy/fem_bar.git
+    cd ~/projects/fem_bar
+    git checkout master
+
+And for convenience, create a link to the executable we are using
+
+    ln -s ~/projects/moose/modules/solid_mechanics/solid_mechanics-opt ./solid_mechanics-opt
+
 Running MOOSE
 =============
 Just call `./solid_mechanics-opt -i INPUTFILE.i`.
